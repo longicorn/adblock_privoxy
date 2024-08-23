@@ -1,0 +1,23 @@
+services:
+  privoxy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        expose: 8118
+    image: adblock_privoxy
+    ports:
+      - "8118:8118"
+    volumes:
+      - ./scripts:/scripts
+      - ./privoxy/user.action:/etc/privoxy/user.action
+      - ./privoxy/user.filter:/etc/privoxy/user.filter
+      - ./privoxy/blocklist.conf:/etc/privoxy/blocklist.conf
+    restart: always
+    tty: true
+    command: /bin/bash
+    entrypoint: >
+      /bin/bash -c "/scripts/01downloader.sh;\
+                    /scripts/99setup.sh;\
+                    privoxy --no-daemon /etc/privoxy/config;\
+                    while true; do echo 'aaaaa'; sleep 5; done"

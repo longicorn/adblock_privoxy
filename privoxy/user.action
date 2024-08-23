@@ -1,0 +1,456 @@
+######################################################################
+#
+#  File        :  user.action
+#
+#  Purpose     :  User-maintained actions file, see
+#                 https://www.privoxy.org/user-manual/actions-file.html
+#
+######################################################################
+
+# This is the place to add your personal exceptions and additions to
+# the general policies as defined in default.action. (Here they will be
+# safe from updates to default.action.) Later defined actions always
+# take precedence, so anything defined here should have the last word.
+
+# See https://www.privoxy.org/user-manual/actions-file.html, or the
+# comments in default.action, for an explanation of what an "action" is
+# and what each action does.
+
+# The examples included here either use bogus sites, or have the actual
+# rules commented out (with the '#' character). Useful aliases are
+# included in the top section as a convenience.
+
+#############################################################################
+# Aliases
+#############################################################################
+{{alias}}
+#############################################################################
+#
+# You can define a short form for a list of permissions - e.g., instead
+# of "-crunch-incoming-cookies -crunch-outgoing-cookies -filter -fast-redirects",
+# you can just write "shop". This is called an alias.
+#
+# Currently, an alias can contain any character except space, tab, '=', '{'
+# or '}'.
+# But please use only 'a'-'z', '0'-'9', '+', and '-'.
+#
+# Alias names are not case sensitive.
+#
+# Aliases beginning with '+' or '-' may be used for system action names
+# in future releases - so try to avoid alias names like this.  (e.g.
+# "+crunch-all-cookies" below is not a good name)
+#
+# Aliases must be defined before they are used.
+#
+# These aliases just save typing later:
+#
++crunch-all-cookies = +crunch-incoming-cookies +crunch-outgoing-cookies
+-crunch-all-cookies = -crunch-incoming-cookies -crunch-outgoing-cookies
+ allow-all-cookies  = -crunch-all-cookies -session-cookies-only -filter{content-cookies}
+ allow-popups       = -filter{all-popups} -filter{unsolicited-popups}
++block-as-image     = +block{Blocked image request.} +handle-as-image
+-block-as-image     = -block
+
+# These aliases define combinations of actions
+# that are useful for certain types of sites:
+#
+fragile     = -block -crunch-all-cookies -filter -fast-redirects -hide-referer -prevent-compression
+shop        = -crunch-all-cookies allow-popups
+
+# Your favourite blend of filters:
+#
+myfilters   = +filter{html-annoyances} +filter{js-annoyances} +filter{all-popups}\
+              +filter{webbugs} +filter{banners-by-size}
+
+# Allow ads for selected useful free sites:
+#
+allow-ads   = -block -filter{banners-by-size} -filter{banners-by-link}
+#... etc.  Customize to your heart's content.
+
+## end aliases ########################################################
+#######################################################################
+
+# Begin examples: #####################################################
+
+# Say you have accounts on some sites that you visit regularly, and you
+# don't want to have to log in manually each time. So you'd like to allow
+# persistent cookies for these sites. The allow-all-cookies alias defined
+# above does exactly that, i.e. it disables crunching of cookies in any
+# direction, and the processing of cookies to make them only temporary.
+#
+{ allow-all-cookies }
+#.sourceforge.net
+#sunsolve.sun.com
+#slashdot.org
+#.yahoo.com
+#.msdn.microsoft.com
+#.redhat.com
+
+# Say the site where you do your homebanking needs to open popup
+# windows, but you have chosen to kill popups uncoditionally by default.
+# This will allow it for your-example-bank.com:
+#
+{ -filter{all-popups} }
+.banking.example.com
+
+# Some hosts and some file types you may not want to filter for
+# various reasons:
+#
+{ -filter }
+
+# Technical documentation is likely to contain strings that might
+# erroneously get altered by the JavaScript-oriented filters:
+#
+#.tldp.org
+#/(.*/)?selfhtml/
+
+# And this stupid host sends streaming video with a wrong MIME type,
+# so that Privoxy thinks it is getting HTML and starts filtering:
+#
+stupid-server.example.com/
+
+
+# Example of a simple "block" action. Say you've seen an ad on your
+# favourite page on example.com that you want to get rid of. You have
+# right-clicked the image, selected "copy image location" and pasted
+# the URL below while removing the leading http://, into a { +block{reason} }
+# section. Note that { +handle-as-image } need not be specified, since
+# all URLs ending in .gif will be tagged as images by the general rules
+# as set in default.action anyway:
+#
+{ +block{Nasty ads.} }
+www.example.com/nasty-ads/sponsor.gif
+
+# The URLs of dynamically generated banners, especially from large banner
+# farms, often don't use the well-known image file name extensions, which
+# makes it impossible for Privoxy to guess the file type just by looking
+# at the URL.
+# You can use the +block-as-image alias defined above for these cases.
+# Note that objects which match this rule but then turn out NOT to be an
+# image are typically rendered as a "broken image" icon by the browser.
+# Use cautiously.
+#
+{ +block-as-image }
+#.doubleclick.net
+#/Realmedia/ads/
+#ar.atwola.com/
+
+# Now you noticed that the default configuration breaks Forbes
+# Magazine, but you were too lazy to find out which action is the
+# culprit, and you were again too lazy to give feedback, so you just
+# used the fragile alias on the site, and -- whoa! -- it worked. The
+# 'fragile' aliases disables those actions that are most likely to break
+# a site. Also, good for testing purposes to see if it is Privoxy that
+# is causing the problem or not.
+#
+{ fragile }
+#.forbes.com
+
+# Here are some sites we wish to support, and we will allow their ads
+# through.
+#
+{ allow-ads }
+#.sourceforge.net
+#.slashdot.org
+#.osdn.net
+
+# user.action is generally the best place to define exceptions and
+# additions to the default policies of default.action. Some actions are
+# safe to have their default policies set here though. So let's set a
+# default policy to have a 'blank' image as opposed to the checkerboard
+# pattern for ALL sites. '/' of course matches all URLs.
+# patterns:
+#
+{ +set-image-blocker{blank} }
+#/
+
+# Enable the following section (not the regression-test directives)
+# to rewrite and redirect click-tracking URLs on news.google.com.
+# Disabling JavaScript should work as well and probably works more reliably.
+#
+# Redirected URL = http://news.google.com/news/url?ct2=us%2F0_0_s_1_1_a&sa=t&usg=AFQjCNHJWPc7ffoSXPSqBRz55jDA0KgxOQ&cid=8797762374160&url=http%3A%2F%2Fonline.wsj.com%2Farticle%2FSB10001424052970204485304576640791304008536.html&ei=YcqeTsymCIjxggf8uQE&rt=HOMEPAGE&vm=STANDARD&bvm=section&did=-6537064229385238098
+# Redirect Destination = http://online.wsj.com/article/SB10001424052970204485304576640791304008536.html
+# Ignore = Yes
+#
+#{+fast-redirects{check-decoded-url}}
+#news.google.com/news/url.*&url=http.*&
+
+# Enable the following section (not the regression-test directives)
+# to block various Facebook "like" and similar tracking URLs.  At the
+# time this section was added it was reported to not break Facebook
+# itself but this may have changed by the time you read this. This URL
+# list is probably incomplete and if you don't have an account anyway,
+# you may prefer to block the whole domain.
+#
+# Blocked URL = http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Ffacebook.com%2Farstechnica&width=300&colorscheme=light&show_faces=false&stream=false&header=false&height=62&border_color=%23FFFFFF
+# Ignore = Yes
+# Blocked URL = http://www.facebook.com/plugins/activity.php?site=arstechnica.com&width=300&height=370&header=false&colorscheme=light&recommendations=false&border_color=%23FFFFFF
+# Ignore = Yes
+# Blocked URL = http://www.facebook.com/plugins/fan.php?api_key=368513495882&connections=10&height=250&id=8304333127&locale=en_US&sdk=joey&stream=false&width=377
+# Ignore = Yes
+# Blocked URL = http://www.facebook.com/plugins/like.php?api_key=368513495882&channel_url=http%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df13997452c%26origin%3Dhttp%253A%252F%252Fonline.wsj.com%252Ff1b037e354%26relation%3Dparent.parent%26transport%3Dpostmessage&extended_social_context=false&href=http%3A%2F%2Fonline.wsj.com%2Farticle%2FSB10001424052970204485304576640791304008536.html&layout=button_count&locale=en_US&node_type=link&ref=wsj_share_FB&sdk=joey&send=false&show_faces=false&width=90
+# Ignore = Yes
+#
+#{+block{Facebook "like" and similar tracking URLs.}}
+#www.facebook.com/(extern|plugins)/(login_status|like(box)?|activity|fan)\.php
+
+######### Examples for SSL actions #########
+# Following section enables TLS/SSL filtering for all sites defined by pattern and requested by HTTPS.
+# {+https-inspection}
+# privoxy.org
+
+# Following section turns off certificate verification for all sites defined by pattern.
+# {+ignore-certificate-errors}
+# privoxy.org
+
+{+filter{rot}}
+/
+
+{ +block }
+127.0.0.1
+
+{ +filter{myadfilter} }
+.
+
+{ +block{scripts, ads} }
+#livedoor.blogimg.jp
+#.zimg.jp
+*.i-mobile.co.jp
+2o7.net
+a8.net
+accesstrade.net
+ad-cloud.jp
+ad-move.jp
+ad-stir.com
+ad-v.jp
+ad.ca-conv.jp
+ad.games.dmm.co.jp
+ad.goo.ne.jp
+ad.maist.jp
+ad.mist.jp
+ad2.nend.net
+adcdn.goo.ne.jp
+adcv.jp
+adimg.net
+adingo.jp
+*.adingo.jp
+adjust-net.jp
+adjust-sp.jp
+view.adjust.com
+adlantis.jp
+adnxs.com
+*.adnxs.com
+adresult-sp.jp
+ads.nicovideo.jp
+ads1.jp.msn.com
+advertising.jp.msn.com
+advg.jp
+affiliate.fc2.com
+ah.yimg.jp
+aid-ad.jp
+aimg.fc2.com
+akamai.net
+aladdin.genieesspv.jp
+altnet.jp
+amoad.com
+*.amoad.com
+analyzer5.fc2.com
+api.adserver.vrizead.com
+api.unthem.com
+atech.ne.jp
+logly.co.jp
+*.logly.co.jp
+bannerflow.net
+bc.geocities.yahoo.co.jp
+bead-ad.com
+behaviad.net
+blogroll.livedoor.net
+bnr.rssad.jp
+buzzurl.jp
+bypass.jp
+c.jp.msn.com
+consearch.jp
+creative.ak.fbcdn.net
+criteo.com
+*.criteo.com
+cyberwing.co.jp
+d2c.ne.jp
+dameparts.com
+dlv.itmedia.co.jp
+securepubads.g.doubleclick.net
+doubleclick.com
+doubleclick.ne.jp
+doubleclick.net
+dtiserv.com
+exit-ad.com
+fancrew.jp
+fbcdn-creative-a.akamaihd.net
+fc.itmedia.co.jp
+fm-p.jp
+fout.jp
+garss.tv
+gigazine.asia
+*.goldspotmedia.com
+goldspotmedia.com
+googleads.g.doubleclick.net
+googlesyndication.com
+gsspat.jp
+h2.msn.com
+i-mobile.co.jp
+i2i.jp
+iadc.qwapi.com
+iadsdk.apple.com
+ichi-ni-san.net
+image.click.livedoor.com
+impact-ad.jp
+impression.nend.net
+inmobi-jp.com
+inmobi.com
+j.zucks.net.zimg.jp
+jlisting.jp
+jp-u.openx.net
+js.ad-stir.com
+kau.li
+kpqwik.xyz
+listing.yahoo.co.jp
+livead.jp
+tck.lmadps.jp
+lmadps.jp
+lmklj.xyz
+lonb.nend.net
+mb-click.jp
+media-b.jp
+medibaad.com
+microad-d.openx.net
+microad.jp
+*.microad.jp
+s-rtb.send.microad.jp
+mreco0.jp
+msads.net
+mucu.jp
+mydas.mobi
+nend.net
+newzia.jp
+openclick.com
+ov.yahoo.co.jp
+owb101.goo.ne.jp
+performancehorizon.com
+questionmarket.com
+rackcdn.com
+rad.msn.com
+reemo-ad.jp
+reporo.net
+san-ni-ichi.com
+sbs-ad.com
+serving-sys.com
+sh.adingo.jp
+sh.zucks.net
+smart-c.jp
+socdm.com
+*.socdm.com
+spstaticimg.ameba.jp
+ssp.send.microad.jp
+imp.u.send.microad.jp
+s-rtb-pb.send.microad.jp
+static.doubleclick.net
+static.zucks.net.zimg.jp
+stjjp.msn.com
+tb..itmedia.co.jp
+tracx-ad.jp
+trafficfactory.biz
+trafficgate.net
+udc.msn.com
+uncn.jp
+*.uncn.jp
+unthem.com
+utm.sankei.jp.msn.com
+valuecommerce.com
+vrizead.com
+webtracker.jp
+xnxx.com
+yeas.yahoo.co.jp
+yicha.jp
+zucks.net
+*.zucks.net
+afcdn.net
+*.afcdn.net
+xliirdr.com
+*.xliirdr.com
+magserv.com
+*.magsrv.com
+#wp.com
+#*.wp.com
+i1.wp.com
+tsyndicate.com
+*.tsyndicate.com
+xjav.tube
+aniporn.com
+appier.net
+*.appier.net
+pubmatic.com
+*.pubmatic.com
+doubleverify.com
+*.doubleverify.com
+amazon-adsystem.com
+*.amazon-adsystem.com
+adsafeprotected.com
+*.adsafeprotected.com
+gain-ads.com
+*.gain-ads.com
+adform.net
+*.adform.net
+*.adtdp.com
+ad.as.amanad.adtdp.com
+ad-delivery.net
+bidtheatre.com
+*.bidtheatre.com
+social-plugins.line.me
+torimochi.line-apps.com
+clap.blogcms.jp
+googleads.g.doubleclick.net
+gcmadv-cdn.goldspotmedia.com
+comment.blogcms.jp
+www.google-analytics.com
+counter2.blog.livedoor.com
+clarity.ms
+*.clarity.ms
+adnear.net
+*.adnear.net
+*.amazon-adsystem.com
+*.adsrvr.org
+*.casalemedia.com
+*.ladsp.com
+anymind360.com
+gacraft.jp
+counter2.blog.livedoor.com
+send-guile.sonicmoov.com
+adn.caprofitx.com
+tracking.prismpartner.smt.docomo.ne.jp
+blog.livedoor.jp/itsoku/settings/ad.js
+blog.livedoor.jp/itsoku/_/json/
+counter2.blog.livedoor.com
+sportdata-dra.things.dbankcloud.com
+dmp.im-apps.net
+scripts.im-apps.net
+ocsp.pki.goog
+*.pki.goog
+api.palette.dev
+featuregates.org
+cdn.microad.jp
+mtalk.google.com
+s.deepl.com
+comcluster.cxense.com
+d-cache.microad.jp
+js.glossom.jp
+automate.linksynergy.com
+am.yahoo.co.jp
+i.socdm.com
+dalb.valuecommerce.com
+www.redditstatic.com
+metrics.icloud.com
+#signaler-pa.clients6.google.com
+addons-pa.clients6.google.com
+asumi.shinobi.jp
+*.shinobi.jp
+shinobi.jp
+ors.cnobi.jp
