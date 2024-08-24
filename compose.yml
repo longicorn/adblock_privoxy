@@ -19,5 +19,4 @@ services:
     entrypoint: >
       /bin/bash -c "/scripts/01downloader.sh;\
                     /scripts/99setup.sh;\
-                    privoxy --no-daemon /etc/privoxy/config;\
-                    while true; do echo 'aaaaa'; sleep 5; done"
+                    privoxy --no-daemon /etc/privoxy/config"
