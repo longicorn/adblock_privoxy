@@ -86,15 +86,3 @@ s|<div class="fluct_ad_img">.*?</div>|<div>deleted by privoxy</div>|g
 s|<script>.*?FixedSocialFooter.*?</script>|<script>//deleted by privoxy</script>|g
 s|<footer .*?class="fixed_social_footer".*?>.*?</footer>|<footer>deleted by privoxy</footer>|g
 s|<div.*?ytd-ad-inline-playback-meta-block.*?>.*?</div>|<div>deleted by privoxy</div>|g
-
-#s|<.*?https://securepubads.g.doubleclick.net/tag/js/gpt.js.*?>||g
-#s|<script async="" src="https://cdn-fluct.sh.adingo.jp/nativead/brain.js" type="text/javascript"></script>||g
-#s|<div .*?class="adingoFluctOverlay".*?>.*?</div>|<div>deleted by privoxy</div>|g
-#s|<script type="text/javascript" id="fluct-native-ad-.*?">.*?</script>|<script type="text/javascript"></script>|g
-#s|<div id="ld-floating-menu".*?data-parts="https://parts.blog.livedoor.jp".*?</div>|<div>deleted by privoxy</div>|g
-#s|<div id="ld-floating-share".*?>.*?</div>|<div>deleted by privoxy</div>|g
-#s|<iframe id="article_clap_frame".*?>.*?</iframe>|<div style="border: solid 1px #F00;">deleted by privoxy</div>|g
-
-#s|http://********.jp/|" style="display: none;" "|g
-#s|<iframe.*?</iframe>|<div style="border: solid 1px #F00;">deleted by privoxy</div>|g
-#google_ads_iframe_/9116787,22884670109/1544234_8_0__container__
