@@ -10,13 +10,16 @@ services:
       - "8118:8118"
     volumes:
       - ./scripts:/scripts
-      - ./privoxy/user.action:/etc/privoxy/user.action
-      - ./privoxy/user.filter:/etc/privoxy/user.filter
-      - ./privoxy/blocklist.conf:/etc/privoxy/blocklist.conf
+      - ./hosts:/hosts
+      - ./privoxy/user.action:/config/privoxy/user.action:ro
+      - ./privoxy/user.filter:/config/privoxy/user.filter:ro
+      - ./privoxy/blocklist.conf:/etc/privoxy/blocklist.conf:ro
     restart: always
     tty: true
     command: /bin/bash
     entrypoint: >
-      /bin/bash -c "/scripts/01downloader.sh;\
+      /bin/bash -c "cp -f /config/privoxy/* /etc/privoxy/;\
+                    /scripts/01downloader.sh;\
+                    /scripts/02update_user_action.sh;\
                     /scripts/99setup.sh;\
                     privoxy --no-daemon /etc/privoxy/config"
