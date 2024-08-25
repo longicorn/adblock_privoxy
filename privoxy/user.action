@@ -203,9 +203,6 @@ www.example.com/nasty-ads/sponsor.gif
 # {+ignore-certificate-errors}
 # privoxy.org
 
-{+filter{rot}}
-/
-
 { +block }
 127.0.0.1
 
