@@ -212,4 +212,3 @@ www.example.com/nasty-ads/sponsor.gif
 { +filter{myadfilter} }
 .
 
-{ +block{scripts, ads} }
