@@ -86,6 +86,8 @@ iadsdk.apple.com
 ichi-ni-san.net
 image.click.livedoor.com
 impact-ad.jp
+*.impact-ad.jp
+y.one.impact-ad.jp
 impression.nend.net
 inmobi-jp.com
 inmobi.com
@@ -188,19 +190,21 @@ bidtheatre.com
 social-plugins.line.me
 torimochi.line-apps.com
 clap.blogcms.jp
-googleads.g.doubleclick.net
+*.g.doubleclick.net
 gcmadv-cdn.goldspotmedia.com
 comment.blogcms.jp
 www.google-analytics.com
 counter2.blog.livedoor.com
 clarity.ms
 *.clarity.ms
+www.clarity.ms
 adnear.net
 *.adnear.net
 *.amazon-adsystem.com
 *.adsrvr.org
 *.casalemedia.com
 *.ladsp.com
+pb.ladsp.com
 anymind360.com
 gacraft.jp
 counter2.blog.livedoor.com
@@ -234,4 +238,18 @@ asumi.shinobi.jp
 *.shinobi.jp
 shinobi.jp
 ors.cnobi.jp
+yads.c.yimg.jp
+mtalk.google.com
+targeting.unrulymedia.com
+fastlane.rubiconproject.com
+hbopenbid.pubmatic.com
+c.amazon-adsystem.com
+static.mixi.jp
+im-apps.net
+*.im-apps.net
+a.run.app
+*.a.run.app
 
+# itainews.comで使用。貫通するのはこれ
+#html-load.com # これを行うと警告が出て表示がおかしくなる
+*.html-load.com
