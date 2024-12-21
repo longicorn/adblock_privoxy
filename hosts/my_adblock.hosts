@@ -17,6 +17,7 @@ adcv.jp
 adimg.net
 adingo.jp
 *.adingo.jp
+sh.adingo.jp
 adjust-net.jp
 adjust-sp.jp
 view.adjust.com
@@ -29,7 +30,6 @@ ads1.jp.msn.com
 advertising.jp.msn.com
 advg.jp
 affiliate.fc2.com
-ah.yimg.jp
 aid-ad.jp
 aimg.fc2.com
 akamai.net
@@ -48,6 +48,8 @@ bc.geocities.yahoo.co.jp
 bead-ad.com
 behaviad.net
 blogroll.livedoor.net
+t.blog.livedoor.jp
+*.blog.livedoor.jp
 bnr.rssad.jp
 buzzurl.jp
 bypass.jp
@@ -56,6 +58,8 @@ consearch.jp
 creative.ak.fbcdn.net
 criteo.com
 *.criteo.com
+bidder.criteo.com
+gum.criteo.com
 cyberwing.co.jp
 d2c.ne.jp
 dameparts.com
@@ -94,6 +98,9 @@ inmobi.com
 j.zucks.net.zimg.jp
 jlisting.jp
 jp-u.openx.net
+u.openx.net
+rtb.openx.net
+*.openx.net
 js.ad-stir.com
 kau.li
 kpqwik.xyz
@@ -147,6 +154,7 @@ trafficgate.net
 udc.msn.com
 uncn.jp
 *.uncn.jp
+ds.uncn.jp
 unthem.com
 utm.sankei.jp.msn.com
 valuecommerce.com
@@ -182,6 +190,8 @@ gain-ads.com
 *.gain-ads.com
 adform.net
 *.adform.net
+s2.adform.net
+asia.adform.net
 *.adtdp.com
 ad.as.amanad.adtdp.com
 ad-delivery.net
@@ -217,6 +227,8 @@ counter2.blog.livedoor.com
 sportdata-dra.things.dbankcloud.com
 dmp.im-apps.net
 scripts.im-apps.net
+sync6.im-apps.net
+*.im-apps.net
 ocsp.pki.goog
 *.pki.goog
 api.palette.dev
@@ -239,17 +251,37 @@ asumi.shinobi.jp
 shinobi.jp
 ors.cnobi.jp
 yads.c.yimg.jp
+ah.yimg.jp
 mtalk.google.com
 targeting.unrulymedia.com
 fastlane.rubiconproject.com
+eus.rubiconproject.com
+*.rubiconproject.com
 hbopenbid.pubmatic.com
 c.amazon-adsystem.com
 static.mixi.jp
 im-apps.net
 *.im-apps.net
+b6.im-apps.net
 a.run.app
 *.a.run.app
-
-# itainews.comで使用。貫通するのはこれ
-#html-load.com # これを行うと警告が出て表示がおかしくなる
+html-load.com
 *.html-load.com
+fb.html-load.com
+0.html-load.com
+firework*.com
+*.firework*.com
+id5-sync.com
+ads.world-fusigi.net
+imp-adedge.i-mobile.co.jp
+server.jp1media.com
+post-endpoint-zypaalk44a-an.a.run.app
+*.a.run.app
+*.run.app
+peoplestack-pa.clients6.google.com
+ads.pubmatic.com
+*.content-loader.com
+prebid-asia.creativecdn.com
+script.4dex.io
+prebid.media.net
+ad.ad-stir.com
