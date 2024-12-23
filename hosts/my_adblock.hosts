@@ -225,9 +225,11 @@ blog.livedoor.jp/itsoku/settings/ad.js
 blog.livedoor.jp/itsoku/_/json/
 counter2.blog.livedoor.com
 sportdata-dra.things.dbankcloud.com
+im-apps.net
 dmp.im-apps.net
 scripts.im-apps.net
 sync6.im-apps.net
+b6.im-apps.net
 *.im-apps.net
 ocsp.pki.goog
 *.pki.goog
@@ -260,15 +262,8 @@ eus.rubiconproject.com
 hbopenbid.pubmatic.com
 c.amazon-adsystem.com
 static.mixi.jp
-im-apps.net
-*.im-apps.net
-b6.im-apps.net
 a.run.app
 *.a.run.app
-html-load.com
-*.html-load.com
-fb.html-load.com
-0.html-load.com
 firework*.com
 *.firework*.com
 id5-sync.com
@@ -285,3 +280,9 @@ prebid-asia.creativecdn.com
 script.4dex.io
 prebid.media.net
 ad.ad-stir.com
+
+
+#html-load.com
+#*.html-load.com
+#fb.html-load.com
+#0.html-load.com
