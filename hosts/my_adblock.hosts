@@ -5,6 +5,8 @@ accesstrade.net
 ad-cloud.jp
 ad-move.jp
 ad-stir.com
+ad.ad-stir.com
+js.ad-stir.com
 ad-v.jp
 ad.ca-conv.jp
 ad.games.dmm.co.jp
@@ -45,6 +47,7 @@ logly.co.jp
 *.logly.co.jp
 bannerflow.net
 bc.geocities.yahoo.co.jp
+b92.yahoo.co.jp
 bead-ad.com
 behaviad.net
 blogroll.livedoor.net
@@ -80,7 +83,13 @@ gigazine.asia
 *.goldspotmedia.com
 goldspotmedia.com
 googleads.g.doubleclick.net
+adservice.google.com
 googlesyndication.com
+*.googlesyndication.com
+www.googleadservices.com
+#addons-pa.clients6.google.com
+#peoplestack-pa.clients6.google.com
+#waa-pa.clients6.google.com
 gsspat.jp
 h2.msn.com
 i-mobile.co.jp
@@ -101,7 +110,6 @@ jp-u.openx.net
 u.openx.net
 rtb.openx.net
 *.openx.net
-js.ad-stir.com
 kau.li
 kpqwik.xyz
 listing.yahoo.co.jp
@@ -184,6 +192,7 @@ doubleverify.com
 *.doubleverify.com
 amazon-adsystem.com
 *.amazon-adsystem.com
+c.amazon-adsystem.com
 adsafeprotected.com
 *.adsafeprotected.com
 gain-ads.com
@@ -210,7 +219,6 @@ clarity.ms
 www.clarity.ms
 adnear.net
 *.adnear.net
-*.amazon-adsystem.com
 *.adsrvr.org
 *.casalemedia.com
 *.ladsp.com
@@ -238,6 +246,8 @@ featuregates.org
 cdn.microad.jp
 mtalk.google.com
 s.deepl.com
+cxense.com
+*.cxense.com
 comcluster.cxense.com
 d-cache.microad.jp
 js.glossom.jp
@@ -247,20 +257,17 @@ i.socdm.com
 dalb.valuecommerce.com
 www.redditstatic.com
 metrics.icloud.com
-addons-pa.clients6.google.com
 asumi.shinobi.jp
 *.shinobi.jp
 shinobi.jp
 ors.cnobi.jp
 yads.c.yimg.jp
 ah.yimg.jp
-mtalk.google.com
 targeting.unrulymedia.com
 fastlane.rubiconproject.com
 eus.rubiconproject.com
 *.rubiconproject.com
 hbopenbid.pubmatic.com
-c.amazon-adsystem.com
 static.mixi.jp
 a.run.app
 *.a.run.app
@@ -273,16 +280,39 @@ server.jp1media.com
 post-endpoint-zypaalk44a-an.a.run.app
 *.a.run.app
 *.run.app
-peoplestack-pa.clients6.google.com
 ads.pubmatic.com
 *.content-loader.com
 prebid-asia.creativecdn.com
 script.4dex.io
 prebid.media.net
-ad.ad-stir.com
+player.gliacloud.com
+cdn.plyr.io
+widgets.outbrain.com
+s0.2mdn.net
+cdn.taboola.com
+www.npttech.com
+tagger.opecloud.com
+mediaconsortium.profiles.tagger.opecloud.com
+gnetwork.gliastudios.com
+c2-ap.piano.io
+experience-ap.piano.io
+#pw.president.jp
+#president.ismcdn.jp
 
 
-#html-load.com
+# livedoor blog
+html-load.com
 #*.html-load.com
+# ad on livedoor?
 #fb.html-load.com
-#0.html-load.com
+#css on livedoor?
+0.html-load.com
+1.html-load.com
+2.html-load.com
+3.html-load.com
+4.html-load.com
+5.html-load.com
+6.html-load.com
+7.html-load.com
+8.html-load.com
+9.html-load.com
