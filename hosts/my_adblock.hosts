@@ -7,6 +7,7 @@ ad-move.jp
 ad-stir.com
 ad.ad-stir.com
 js.ad-stir.com
+bypass.ad-stir.com
 ad-v.jp
 ad.ca-conv.jp
 ad.games.dmm.co.jp
@@ -82,11 +83,14 @@ garss.tv
 gigazine.asia
 *.goldspotmedia.com
 goldspotmedia.com
+mtalk.google.com
+www.google-analytics.com
 googleads.g.doubleclick.net
 adservice.google.com
 googlesyndication.com
 *.googlesyndication.com
 www.googleadservices.com
+*.adtrafficquality.google
 #addons-pa.clients6.google.com
 #peoplestack-pa.clients6.google.com
 #waa-pa.clients6.google.com
@@ -121,9 +125,12 @@ lonb.nend.net
 mb-click.jp
 media-b.jp
 medibaad.com
+cdn.microad.jp
+d-cache.microad.jp
 microad-d.openx.net
 microad.jp
 *.microad.jp
+s-rtb-pb.send.microad.jp
 s-rtb.send.microad.jp
 mreco0.jp
 msads.net
@@ -187,6 +194,7 @@ aniporn.com
 appier.net
 *.appier.net
 pubmatic.com
+hbopenbid.pubmatic.com
 *.pubmatic.com
 doubleverify.com
 *.doubleverify.com
@@ -208,11 +216,10 @@ bidtheatre.com
 *.bidtheatre.com
 social-plugins.line.me
 torimochi.line-apps.com
-clap.blogcms.jp
 *.g.doubleclick.net
 gcmadv-cdn.goldspotmedia.com
+clap.blogcms.jp
 comment.blogcms.jp
-www.google-analytics.com
 counter2.blog.livedoor.com
 clarity.ms
 *.clarity.ms
@@ -243,13 +250,10 @@ ocsp.pki.goog
 *.pki.goog
 api.palette.dev
 featuregates.org
-cdn.microad.jp
-mtalk.google.com
 s.deepl.com
 cxense.com
 *.cxense.com
 comcluster.cxense.com
-d-cache.microad.jp
 js.glossom.jp
 automate.linksynergy.com
 am.yahoo.co.jp
@@ -299,6 +303,14 @@ experience-ap.piano.io
 #pw.president.jp
 #president.ismcdn.jp
 
+api-iam.intercom.io
+js.intercomcdn.com
+bance.jp
+tr.dsp.bance.jp
+tr.ssp.bance.jp
+img.dsp.bance.jp
+bid.ssp.bance.jp
+beacon.geniee.jp
 
 # livedoor blog
 html-load.com
